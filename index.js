@@ -3,7 +3,7 @@ const generateMarkdown = require('./utils/generateMarkdown');
 const inquirer = require('inquirer');
 const fs = require('fs');
 
-const licenses = ['AFL-3.0', 'Apache-2.0', 'Artistic-2.0', 'BSL-1.0', 'BSD-2-Clause', 'BSD-3-Clause', 'BSD-3-Clause-Clear', 'BSD--Clause', '0BSD', 'CC', 'CC0-1.0', 'CC-BY-4.0', 'CC-BY-SA-4.0', 'WTFPL', 'ECL-2.0', 'EPL-1.0', 'EPL-2.0', 'EUPL-1.1', 'AGPL-3.0', 'GPL', 'GPL-2.0', 'GPL-3.0', 'LGPL', 'LGPL-2.1', 'LGPL-3.0', 'ISC', 'LPPL-1.3c', 'MS-PL', 'MIT', 'MPL-2.0', 'OSL-3.0', 'PostgreSQL', 'OFL-1.1', 'NCSA', 'Unlicense', 'Zlib', new inquirer.Separator()];
+const licenses = ['AFL-3.0', 'Apache-2.0', 'Artistic-2.0', 'BSL-1.0', 'BSD-2-Clause', 'BSD-3-Clause', 'BSD-3-Clause-Clear', 'BSD-Clause', '0BSD', 'CC', 'CC0-1.0', 'CC-BY-4.0', 'CC-BY-SA-4.0', 'WTFPL', 'ECL-2.0', 'EPL-1.0', 'EPL-2.0', 'EUPL-1.1', 'AGPL-3.0', 'GPL', 'GPL-2.0', 'GPL-3.0', 'LGPL', 'LGPL-2.1', 'LGPL-3.0', 'ISC', 'LPPL-1.3c', 'MS-PL', 'MIT', 'MPL-2.0', 'OSL-3.0', 'PostgreSQL', 'OFL-1.1', 'NCSA', 'Unlicense', 'Zlib', new inquirer.Separator()];
 // TODO: Create an array of questions for user input
 const questions = [{
     type: 'input',
@@ -56,9 +56,9 @@ const questions = [{
 }, {
     type: 'input',
     name: 'contributions',
-    message: 'List any contributors and contributions.',
+    message: 'Provide instructions on how you would like others to contribute to the project.',
     when(answers) {
-        return answers.tableofcontents.includes('Contributions');
+        return answers.tableofcontents.includes('Contributing');
     }
 }, {
     type: 'input',
@@ -77,7 +77,7 @@ const questions = [{
 }, {
     type: 'input',
     name: 'email',
-    message: 'What email address would you like user/contributors to contact you at?',
+    message: 'What email address would you like user/contributors to contact you at if they have any additional questions?',
     when(answers) {
         return answers.tableofcontents.includes('Questions');
     }
