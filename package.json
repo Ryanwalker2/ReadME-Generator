@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "badge-maker": "^3.3.1",
-    "inquirer": "^8.2.4"
+    "inquirer": "^8.2.4",
+    "inquirer-select-directory": "^1.2.0"
   }
 }

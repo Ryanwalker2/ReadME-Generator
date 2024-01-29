@@ -50,8 +50,7 @@ function sectionSelector(topic, data) {
     case 'Questions':
       let contact = [data.username, data.email]
       return `[Github Profile](https://github.com/${contact[0]}/)
-      \n If you have any additional questions, feel free to contact me at the email provided below.\n
-      [Email: ${contact[1]}](mailto:${contact[1]})`;
+      \n If you have any additional questions, feel free to contact me at the email provided below.\n\n[Email: ${contact[1]}](mailto:${contact[1]})`;
       default:
         return `<!--- No Information added --->`;
   }

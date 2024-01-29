@@ -1,6 +1,7 @@
 // TODO: Include packages needed for this application
 const generateMarkdown = require('./utils/generateMarkdown');
 const inquirer = require('inquirer');
+inquirer.registerPrompt('directory', require('inquirer-select-directory'));
 const fs = require('fs');
 
 const licenses = ['AFL-3.0', 'Apache-2.0', 'Artistic-2.0', 'BSL-1.0', 'BSD-2-Clause', 'BSD-3-Clause', 'BSD-3-Clause-Clear', 'BSD-Clause', '0BSD', 'CC', 'CC0-1.0', 'CC-BY-4.0', 'CC-BY-SA-4.0', 'WTFPL', 'ECL-2.0', 'EPL-1.0', 'EPL-2.0', 'EUPL-1.1', 'AGPL-3.0', 'GPL', 'GPL-2.0', 'GPL-3.0', 'LGPL', 'LGPL-2.1', 'LGPL-3.0', 'ISC', 'LPPL-1.3c', 'MS-PL', 'MIT', 'MPL-2.0', 'OSL-3.0', 'PostgreSQL', 'OFL-1.1', 'NCSA', 'Unlicense', 'Zlib', new inquirer.Separator()];
@@ -36,7 +37,7 @@ const questions = [{
     name: 'installation',
     message: 'Add instructions on how to install the project.',
     when(answers) {
-       return  answers.tableofcontents.includes('Installation');
+        return answers.tableofcontents.includes('Installation');
     }
 }, {
     type: 'input',
@@ -65,7 +66,7 @@ const questions = [{
     name: 'tests',
     message: 'List any Tests included with the package.',
     when(answers) {
-        return  answers.tableofcontents.includes('Tests');
+        return answers.tableofcontents.includes('Tests');
     }
 }, {
     type: 'input',
@@ -81,12 +82,25 @@ const questions = [{
     when(answers) {
         return answers.tableofcontents.includes('Questions');
     }
+}, {
+    type: 'input',
+    name: 'filename',
+    message: 'What should the file be named? You do not need to include the file extension.',
+    default: 'README'
+}, {
+    type: 'directory',
+    name: 'filepath',
+    message: 'Choose where you would like the markdown file saved',
+    basePath: './',
+    options: {
+        displayFiles: false,
+    }
 }];
 
 // TODO: Create a function to write README file
 function writeToFile(data) {
-    const fileName = `README.md`;
-    fs.writeFile(fileName, generateMarkdown(data), (err) => err ? console.log(err) : console.log(`${fileName} successfully created!`));
+    const fileName = `${data.filename}.md`;
+    fs.writeFile(`${data.filepath}/${fileName}`, generateMarkdown(data), (err) => err ? console.log(err) : console.log(`${fileName} successfully created at ${data.filepath}!`));
 };
 
 // TODO: Create a function to initialize app
