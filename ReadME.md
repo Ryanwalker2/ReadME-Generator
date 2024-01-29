@@ -21,7 +21,7 @@
 
   Once the index.js file is run using node.js. The terminal with prompt you with several questions. The information you enter into these prompts will be used directly to generate your README.md file. Feel free to input as much or as little information as you like.(This information can be modified afterwards) Once all of the prompts have been answered, a README.md file will be created in the same directory as the index.js file.
 
-  Please see the following for an short demo of the README Generator.
+  Please [click this link](https://drive.google.com/file/d/1iQwz1zFx752FstErYD3UFRiVPWD4_1Y4/view?usp=sharing) or see the following for an short demo of the README Generator.
 
   ![](/assets/images/README_Generator-Demo.gif)
   
